@@ -30,7 +30,7 @@ export const FinancialRecordsProvider = ({
   const fetchRecords = async () => {
     if (!user) return;
     const response = await fetch(
-      `http://localhost:3000/financial-record/getAllByUserID/${user.id}`
+      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/getAllByUserID/${user.id}`
     );
     if (response.ok) {
       const records = await response.json();
@@ -45,13 +45,16 @@ export const FinancialRecordsProvider = ({
 
   const addRecord = async (record: FinancialRecord) => {
     //
-    const response = await fetch("http://localhost:3000/financial-record", {
-      method: "POST",
-      body: JSON.stringify(record),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record",
+      {
+        method: "POST",
+        body: JSON.stringify(record),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     try {
       if (response.ok) {
         const newRecord = await response.json();
@@ -64,7 +67,7 @@ export const FinancialRecordsProvider = ({
 
   const updateRecord = async (id: string, newRecord: FinancialRecord) => {
     const response = await fetch(
-      `http://localhost:3000/financial-record/${id}`,
+      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -92,7 +95,7 @@ export const FinancialRecordsProvider = ({
 
   const deleteRecord = async (id: string) => {
     const response = await fetch(
-      `http://localhost:3000/financial-record/${id}`,
+      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/${id}`,
       {
         method: "DELETE",
         headers: {

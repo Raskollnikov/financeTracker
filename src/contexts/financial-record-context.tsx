@@ -89,9 +89,30 @@ export const FinancialRecordsProvider = ({
       }
     } catch (err) {}
   };
+
+  const deleteRecord = async (id: string) => {
+    const response = await fetch(
+      `http://localhost:3000/financial-record/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    try {
+      if (response.ok) {
+        const deletedRecord = await response.json();
+        setRecords((prev) =>
+          prev.filter((each) => each._id !== deletedRecord._id)
+        );
+      }
+    } catch (error) {}
+  };
   return (
     <FinancialRecordsContext.Provider
-      value={{ records, addRecord, updateRecord }}
+      value={{ records, addRecord, updateRecord, deleteRecord }}
     >
       {children}
     </FinancialRecordsContext.Provider>

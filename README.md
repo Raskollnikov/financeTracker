@@ -1,50 +1,24 @@
-# React + TypeScript + Vite
+Finance Tracker Application<br>
+<br>
+Overview<br>
+This is a full-stack Finance Tracker application designed to help users manage their finances efficiently.<br> The app features a powerful backend built with Node.js/Express using TypeScript, and a dynamic frontend built with React and TypeScript.<br>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+[Live Demo](https://myfinancetrackerapp3.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[backend](https://github.com/Raskollnikov/financeTracker_server)
 
-## Expanding the ESLint configuration
+Tech Stack<br>
+Backend: Node.js, Express, TypeScript<br>
+Frontend: React, TypeScript <br>
+Database: (MongoDB) 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Features<br>
+Track income, expenses, and financial records<br>
+Responsive and user-friendly interface<br>
+Modular codebase for easy scalability<br>
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+I hate Css:)))

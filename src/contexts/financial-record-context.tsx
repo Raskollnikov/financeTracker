@@ -30,7 +30,7 @@ export const FinancialRecordsProvider = ({
   const fetchRecords = async () => {
     if (!user) return;
     const response = await fetch(
-      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/getAllByUserID/${user.id}`
+      `https://financetrackerapp-66228c283420.herokuapp.com/financial-record/getAllByUserID/${user.id}`
     );
     if (response.ok) {
       const records = await response.json();
@@ -46,7 +46,7 @@ export const FinancialRecordsProvider = ({
   const addRecord = async (record: FinancialRecord) => {
     //
     const response = await fetch(
-      "https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record",
+      "https://financetrackerapp-66228c283420.herokuapp.com/financial-record",
       {
         method: "POST",
         body: JSON.stringify(record),
@@ -67,7 +67,7 @@ export const FinancialRecordsProvider = ({
 
   const updateRecord = async (id: string, newRecord: FinancialRecord) => {
     const response = await fetch(
-      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/${id}`,
+      `https://financetrackerapp-66228c283420.herokuapp.com/financial-record/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -95,7 +95,7 @@ export const FinancialRecordsProvider = ({
 
   const deleteRecord = async (id: string) => {
     const response = await fetch(
-      `https://myfinancetracker-42fc70306ddd.herokuapp.com/financial-record/${id}`,
+      `https://financetrackerapp-66228c283420.herokuapp.com/financial-record/${id}`,
       {
         method: "DELETE",
         headers: {

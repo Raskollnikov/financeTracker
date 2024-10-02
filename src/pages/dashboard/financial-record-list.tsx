@@ -3,7 +3,7 @@ import {
   FinancialRecord,
   useFinancialRecords,
 } from "../../contexts/financial-record-context";
-import { useTable, Column, CellProps, Row } from "react-table";
+import { useTable, Column, CellProps } from "react-table";
 
 interface EditableCellProps extends CellProps<FinancialRecord> {
   updateRecord: (rowIndex: number, columnId: string, value: any) => void;
@@ -52,7 +52,11 @@ export const FinancialRecordList = () => {
 
   const updateCellRecord = (rowIndex: number, columnId: string, value: any) => {
     const id = records[rowIndex]?._id;
-    updateRecord(id ?? "", { ...records[rowIndex], [columnId]: value });
+    if (id) {
+      updateRecord(id, { ...records[rowIndex], [columnId]: value });
+    } else {
+      console.warn("Record ID is missing, unable to update.");
+    }
   };
 
   const columns: Array<Column<FinancialRecord>> = useMemo(
@@ -104,13 +108,11 @@ export const FinancialRecordList = () => {
       {
         Header: "Date",
         accessor: "date",
-        Cell: (props) => (
-          <EditableCell
-            {...props}
-            updateRecord={updateCellRecord}
-            editable={false}
-          />
-        ),
+        Cell: ({ value }) => {
+          const formattedDate = new Date(value).toLocaleDateString();
+          return <span>{formattedDate}</span>;
+        },
+        editable: false,
       },
       {
         Header: "Delete",
@@ -128,11 +130,14 @@ export const FinancialRecordList = () => {
     [records]
   );
 
+  const memoizedRecords = useMemo(() => records, [records]);
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns,
-      data: records,
+      data: memoizedRecords,
     });
+
   return (
     <div className="table-container">
       <table {...getTableProps()} className="table">
@@ -146,7 +151,7 @@ export const FinancialRecordList = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, idx) => {
+          {rows.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>

@@ -1,4 +1,4 @@
-/* General page styles */
+/* I hate Css! */
 body,
 html {
   margin: 0;
@@ -6,6 +6,7 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f7fa;
   color: #333;
+  overflow-x: hidden;
 }
 
 .app-container {
@@ -20,8 +21,8 @@ html {
 /* Navbar styles */
 .navbar {
   background-color: #3498db; /* Blue shade that matches button colors */
-  padding: 10px 20px;
-  padding-right: 50px;
+  padding: 10px 5px;
+  padding-right: 60px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -38,7 +39,7 @@ html {
 }
 
 .navbar a {
-  color: white; /* Ensures links are white */
+  color: white;
   text-decoration: none;
   margin-right: 20px;
   font-weight: bold;
@@ -46,10 +47,9 @@ html {
 }
 
 .navbar a:hover {
-  color: #e0e0e0; /* Light grey for hover effect */
+  color: #e0e0e0;
 }
 
-/* Specific styling for Clerk's UserButton if needed */
 .clerk-user-button {
   background-color: transparent;
   border: none;
@@ -58,9 +58,8 @@ html {
 }
 
 .clerk-user-button:hover {
-  color: #e0e0e0; /* Consistency in hover effects */
+  color: #e0e0e0;
 }
 
-/* Additional styles to ensure text and elements are vertically aligned properly */
 .navbar * {
 }
